@@ -1,3 +1,4 @@
 com.android.ide.eclipse.adt.fixLegacyEditors=1
 com.android.ide.eclipse.adt.sdk=D\:\\ProgrammingProjects\\Java\\Atos_IT_Challenge\\Development\\Libs\\adt-bundle-windows-x86-20130219\\sdk
+com.android.ide.eclipse.adt.xmlEditor=true
 eclipse.preferences.version=1
