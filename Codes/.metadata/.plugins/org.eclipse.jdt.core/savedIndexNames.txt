@@ -1,0 +1,4 @@
+INDEX VERSION 1.126+D:\ProgrammingProjects\Java\Atos_IT_Challenge\Development\Codes\.metadata\.plugins\org.eclipse.jdt.core
+3985459771.index
+472847905.index
+3844149789.index
