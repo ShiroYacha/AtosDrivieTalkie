@@ -1,6 +1,5 @@
 INDEX VERSION 1.126+D:\ProgrammingProjects\Java\Atos_IT_Challenge\AtosDrivieTalkie\Codes\.metadata\.plugins\org.eclipse.jdt.core
 4155206848.index
-2404861450.index
 1498219845.index
 4041092966.index
 3974580528.index
