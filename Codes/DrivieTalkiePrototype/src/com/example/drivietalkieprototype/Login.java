@@ -2,6 +2,8 @@ package com.example.drivietalkieprototype;
 
 import javax.security.auth.PrivateCredentialPermission;
 
+import org.jivesoftware.smack.XMPPException;
+
 import android.R.bool;
 import android.app.Activity;
 import android.os.Bundle;
@@ -11,29 +13,40 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import core.*;
+
 public class Login extends Activity {
 
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
-		EditText id;
-		EditText password;
-		Spinner  server;
-		Button	login;
+		EditText et_id;
+		EditText et_password;
+		Spinner  sp_server;
+		Button	btn_login;
 		super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
-        id=(EditText)findViewById(R.id.editText1);
-        login=(Button)findViewById(R.id.button1);
+        et_id=(EditText)findViewById(R.id.editText1);
+        et_password=(EditText)findViewById(R.id.editText2);
+        btn_login=(Button)findViewById(R.id.button1);
         
-        //id.getText().toString()
-        login.setOnClickListener(new OnClickListener() {
+        final XmppClientFacade facade=new XmppClientFacade();
+        
+        final String id=et_id.getText().toString();
+        final String password=et_password.getText().toString();
+        btn_login.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
-				
+				try {
+					facade.login(id, password, "Gtalk");
+				} catch (XMPPException e) {
+					// TODO: handle exception
+				}
 				
 			}
 		});
 
 	}
 }
+

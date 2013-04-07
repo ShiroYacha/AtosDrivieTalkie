@@ -4,6 +4,7 @@
 		<item value="false" key="WizardFileSystemResourceImportPage1.STORE_OVERWRITE_EXISTING_RESOURCES_ID"/>
 		<item value="false" key="WizardFileSystemResourceImportPage1.STORE_CREATE_CONTAINER_STRUCTURE_ID"/>
 		<list key="WizardFileSystemResourceImportPage1.STORE_SOURCE_NAMES_ID">
+			<item value="D:\ProgrammingProjects\Java\Atos_IT_Challenge\AtosDrivieTalkie\Codes\DrivieTalkieCore\src\DrivieTalkieCore"/>
 			<item value="D:\ProgrammingProjects\Java\Atos_IT_Challenge\AtosDrivieTalkie\Codes\UML\GeneratedCodes"/>
 		</list>
 	</section>
@@ -22,6 +23,12 @@
 	<section name="WorkbenchPreferenceDialogSettings">
 		<item value="150" key="DIALOG_Y_ORIGIN"/>
 		<item value="163" key="DIALOG_X_ORIGIN"/>
+	</section>
+	<section name="NewWizardAction">
+		<item value="org.eclipse.wst.xml.ui.internal.wizards.NewXMLWizard" key="NewWizardSelectionPage.STORE_SELECTED_ID"/>
+		<list key="NewWizardSelectionPage.STORE_EXPANDED_CATEGORIES_ID">
+			<item value="org.eclipse.wst.XMLCategory"/>
+		</list>
 	</section>
 	<section name="ImportExportAction">
 		<item value="org.eclipse.ui.wizards.import.FileSystem" key="ImportExportPage.STORE_SELECTED_IMPORT_WIZARD_ID"/>
