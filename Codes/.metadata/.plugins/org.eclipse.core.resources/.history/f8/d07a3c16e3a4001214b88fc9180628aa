@@ -1,0 +1,78 @@
+package com.example.drivietalkieprototype;
+
+import java.util.LinkedHashMap;
+
+import org.jivesoftware.smack.XMPPConnection;
+import org.jivesoftware.smack.XMPPException;
+
+import core.*;
+
+import android.R.string;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.EditText;
+
+
+public class Login extends Activity {
+
+	protected static final Context Login = null;
+	EditText et_id;
+	EditText et_password;
+	XmppClientFacade facade;
+	Intent resultInt ;
+	
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+
+		//Spinner  sp_server;
+		Button	btn_login;
+		super.onCreate(savedInstanceState);
+        setContentView(R.layout.login);
+        et_id=(EditText)findViewById(R.id.editText1);
+        et_password=(EditText)findViewById(R.id.editText2);
+        btn_login=(Button)findViewById(R.id.button1);
+        
+        facade=new XmppClientFacade();
+        resultInt = new Intent(this,Login.class);
+			
+        btn_login.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				
+		        String id=et_id.getText().toString();
+		        String password=et_password.getText().toString();
+	        
+		        id="shiroyacha1990@gmail.com";
+		        password = "ladivine";
+				try {
+					facade.login(id, password, "Gtalk");
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+				LinkedHashMap<String, Object> obj = new LinkedHashMap<String, Object>();
+                obj.put("hashmapkey",facade);
+                
+            
+                Bundle b = new Bundle();
+                b.putSerializable("bundleobj", obj);
+                resultInt.putExtras(b);
+                setResult(RESULT_CANCELED, resultInt);     
+                finish();
+
+			}
+		});
+        
+        
+	}
+	
+}
+
+

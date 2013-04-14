@@ -1,0 +1,51 @@
+package core;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.jivesoftware.smack.Roster;
+import org.jivesoftware.smack.RosterEntry;
+import org.jivesoftware.smack.RosterGroup;
+import org.jivesoftware.smack.XMPPConnection;
+
+import android.R.string;
+
+
+public class RosterManager {
+
+	private XMPPConnection connection;
+	
+	public RosterManager(XMPPConnection connection)
+	{
+		this.connection=connection;
+	}
+	
+	public List<String> getRosterList()
+	{
+		Roster roster = connection.getRoster();
+		List<String> list = new ArrayList<String>();
+		for (RosterEntry entry : roster.getEntries()) {
+			String elementString = "";
+			elementString += "user:" + entry.getUser() + "; ";
+			elementString += "status:" + roster.getPresence(entry.getUser())
+					+ "; ";
+			elementString += "type:" + entry.getType() + "; ";
+			elementString += "group:";
+			for (RosterGroup group : entry.getGroups()) {
+				elementString += group.getName();
+			}
+			elementString += "";
+			list.add(elementString);
+		}
+		return list;
+	}
+	
+	public RosterEntry tryGetRosterEntryByName(String userName)
+	{
+		Roster roster = connection.getRoster();
+		for (RosterEntry entry : roster.getEntries()) {
+			if(entry.getUser()==userName)
+				
+		}
+	}
+}

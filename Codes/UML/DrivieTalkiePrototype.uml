@@ -420,7 +420,7 @@
 <XPD:REF name="ClientDependencies[0]">AVnhVf1lx0mbYY8AV9/KxwAA</XPD:REF>
 <XPD:ATTR name="#Specializations" type="integer">1</XPD:ATTR>
 <XPD:REF name="Specializations[0]">bRb+HuJt/ECBMyX2RiLjpwAA</XPD:REF>
-<XPD:ATTR name="#Operations" type="integer">5</XPD:ATTR>
+<XPD:ATTR name="#Operations" type="integer">4</XPD:ATTR>
 <XPD:OBJ name="Operations[0]" type="UMLOperation" guid="4d70+7d6KUC11W2i1Pe1hgAA">
 <XPD:ATTR name="Name" type="string">getConnection</XPD:ATTR>
 <XPD:REF name="Owner">NoKmYI+RrkKk3bmm0YO59QAA</XPD:REF>
@@ -453,10 +453,6 @@
 <XPD:ATTR name="TypeExpression" type="string">String</XPD:ATTR>
 <XPD:REF name="BehavioralFeature">WDqpO7ZQTkqW2mPpxTIo5AAA</XPD:REF>
 </XPD:OBJ>
-</XPD:OBJ>
-<XPD:OBJ name="Operations[4]" type="UMLOperation" guid="NSAaZJwkFkCJCvMLAADa7AAA">
-<XPD:ATTR name="Name" type="string">XmppServerConnection</XPD:ATTR>
-<XPD:REF name="Owner">NoKmYI+RrkKk3bmm0YO59QAA</XPD:REF>
 </XPD:OBJ>
 <XPD:ATTR name="#TypedParameters" type="integer">1</XPD:ATTR>
 <XPD:REF name="TypedParameters[0]">8keZgWT0RkenTlXFxuFB3QAA</XPD:REF>

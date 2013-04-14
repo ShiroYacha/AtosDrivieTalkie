@@ -1,0 +1,55 @@
+package core;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.jivesoftware.smack.Roster;
+import org.jivesoftware.smack.RosterEntry;
+import org.jivesoftware.smack.RosterGroup;
+import org.jivesoftware.smack.XMPPConnection;
+
+import android.R.string;
+
+
+public class RosterManager {
+
+	private XMPPConnection connection;
+	
+	public RosterManager(XMPPConnection connection)
+	{
+		this.connection=connection;
+	}
+	
+	public List<HashMap<String, String>> getRosterMapList()
+	{
+		Roster roster = connection.getRoster();
+		List<HashMap<String, String>> rosterMapList=new ArrayList<HashMap<String,String>>();
+		for (RosterEntry entry : roster.getEntries()) {
+			HashMap<String,String> map = new HashMap<String,String>();
+			// put user
+			map.put("user", entry.getUser());
+			// put status
+			map.put("status", roster.getPresence(entry.getUser()).toString().replaceAll("(", "").replaceAll(")", ""));
+			// put groups
+			String groups="";
+			for (RosterGroup group : entry.getGroups()) {
+				groups += group.getName()+";";
+			}
+			map.put("groups", groups);
+			rosterMapList.add(map);
+		}
+		return rosterMapList;
+	}
+	
+	public RosterEntry tryGetRosterEntryByName(String userName)
+	{
+		Roster roster = connection.getRoster();
+		for (RosterEntry entry : roster.getEntries()) {
+			if(entry.getUser()==userName)
+				return entry;
+		}
+		return null;
+	}
+}

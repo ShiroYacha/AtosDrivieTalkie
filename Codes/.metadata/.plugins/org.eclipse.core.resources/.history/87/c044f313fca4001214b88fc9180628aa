@@ -1,0 +1,56 @@
+package core;
+
+import org.jivesoftware.smack.XMPPConnection;
+import org.jivesoftware.smack.XMPPException;
+import org.xbill.DNS.tests.primary;
+
+import android.R.integer;
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.os.StrictMode;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
+public class XmppClientFacade {
+
+	private XMPPConnection xmppConnection;
+	
+	private RosterManager rosterManager;
+	
+	@SuppressLint("NewApi")
+	public void login(String username, String password, String server) throws XMPPException 
+	{
+		// Network on main thread
+		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+		StrictMode.setThreadPolicy(policy);
+		// Create connection
+		XmppServerConnection xmppServerConnection=null;
+		// Create different server connection
+		if(server=="Gtalk")
+			xmppServerConnection=XmppServerConnectionFactory.CreateGtalkConnection();
+		// Connect and login
+		xmppServerConnection.connect();
+		xmppServerConnection.login(username, password);
+		// Store connection
+		xmppConnection=xmppServerConnection.getConnection();
+		// Initialize
+		initialize();
+	}
+	
+	public void loadRoster(Context context,int resourceId,final ListView listView)
+	{
+		// Update roster to list view
+		ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(context,
+				resourceId, rosterManager.getRosterList());
+		listView.setAdapter(arrayAdapter);
+		arrayAdapter.notifyDataSetChanged();
+		// Set listener for selection
+		listView.setOnItemSelectedListener(new OnItemSelectedListener() {
+		};
+	}
+	
+	private void initialize()
+	{
+		rosterManager=new RosterManager(xmppConnection);
+	}
+}

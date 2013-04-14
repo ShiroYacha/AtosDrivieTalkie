@@ -1,0 +1,9 @@
+package core;
+
+public class ChatManager {
+	
+	public class ArrayAdapterMessageListener : MessageListener
+	{
+		
+	}
+}

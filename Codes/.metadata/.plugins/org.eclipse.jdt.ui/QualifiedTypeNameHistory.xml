@@ -1,9 +1,45 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="org.jivesoftware.smack.XMPPConnection"/>
-<fullyQualifiedTypeName name="org.jivesoftware.smack.ConnectionConfiguration"/>
 <fullyQualifiedTypeName name="org.jivesoftware.smack.SASLAuthentication"/>
 <fullyQualifiedTypeName name="XmppServerConnectionFactory"/>
 <fullyQualifiedTypeName name="XmppServerConnection"/>
 <fullyQualifiedTypeName name="DrivieTalkieCore.XmppClientFacade"/>
+<fullyQualifiedTypeName name="org.jivesoftware.smack.XMPPException"/>
+<fullyQualifiedTypeName name="core.XmppServerConnection"/>
+<fullyQualifiedTypeName name="core.ChatManager"/>
+<fullyQualifiedTypeName name="java.lang.Exception"/>
+<fullyQualifiedTypeName name="org.jivesoftware.smack.ConnectionConfiguration"/>
+<fullyQualifiedTypeName name="android.os.StrictMode"/>
+<fullyQualifiedTypeName name="core.XmppClientFacade"/>
+<fullyQualifiedTypeName name="java.io.Serializable"/>
+<fullyQualifiedTypeName name="java.util.LinkedHashMap"/>
+<fullyQualifiedTypeName name="android.content.Intent"/>
+<fullyQualifiedTypeName name="com.example.drivietalkieprototype.MainActivity"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="org.jivesoftware.smack.Roster"/>
+<fullyQualifiedTypeName name="org.jivesoftware.smack.RosterGroup"/>
+<fullyQualifiedTypeName name="android.annotation.SuppressLint"/>
+<fullyQualifiedTypeName name="org.jivesoftware.smack.XMPPConnection"/>
+<fullyQualifiedTypeName name="core.RosterManager"/>
+<fullyQualifiedTypeName name="android.R.integer"/>
+<fullyQualifiedTypeName name="android.content.Context"/>
+<fullyQualifiedTypeName name="org.jivesoftware.smack.RosterEntry"/>
+<fullyQualifiedTypeName name="android.R.string"/>
+<fullyQualifiedTypeName name="android.widget.AdapterView.OnItemSelectedListener"/>
+<fullyQualifiedTypeName name="android.view.View"/>
+<fullyQualifiedTypeName name="android.widget.AdapterView"/>
+<fullyQualifiedTypeName name="org.jivesoftware.smack.MessageListener"/>
+<fullyQualifiedTypeName name="org.jivesoftware.smack.Chat"/>
+<fullyQualifiedTypeName name="java.util.Map"/>
+<fullyQualifiedTypeName name="java.util.Set"/>
+<fullyQualifiedTypeName name="java.util.Map.Entry"/>
+<fullyQualifiedTypeName name="android.widget.ListView"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="java.util.HashMap"/>
+<fullyQualifiedTypeName name="java.lang.String"/>
+<fullyQualifiedTypeName name="org.xbill.DNS.tests.primary"/>
+<fullyQualifiedTypeName name="android.widget.AdapterView.OnItemClickListener"/>
+<fullyQualifiedTypeName name="android.widget.ArrayAdapter"/>
+<fullyQualifiedTypeName name="android.R.anim"/>
+<fullyQualifiedTypeName name="android.R.layout"/>
 </qualifiedTypeNameHistroy>

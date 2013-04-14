@@ -4,6 +4,8 @@
 		<item value="false" key="WizardFileSystemResourceImportPage1.STORE_OVERWRITE_EXISTING_RESOURCES_ID"/>
 		<item value="false" key="WizardFileSystemResourceImportPage1.STORE_CREATE_CONTAINER_STRUCTURE_ID"/>
 		<list key="WizardFileSystemResourceImportPage1.STORE_SOURCE_NAMES_ID">
+			<item value="D:\ProgrammingProjects\Java\Atos_IT_Challenge\Development\Tests\AsmackTest\res\layout"/>
+			<item value="D:\ProgrammingProjects\Java\Atos_IT_Challenge\Development\Libs\asmack"/>
 			<item value="D:\ProgrammingProjects\Java\Atos_IT_Challenge\AtosDrivieTalkie\Codes\DrivieTalkieCore\src\DrivieTalkieCore"/>
 			<item value="D:\ProgrammingProjects\Java\Atos_IT_Challenge\AtosDrivieTalkie\Codes\UML\GeneratedCodes"/>
 		</list>
@@ -31,9 +33,10 @@
 		</list>
 	</section>
 	<section name="ImportExportAction">
-		<item value="org.eclipse.ui.wizards.import.FileSystem" key="ImportExportPage.STORE_SELECTED_IMPORT_WIZARD_ID"/>
+		<item value="org.eclipse.ui.wizards.import.ExternalProject" key="ImportExportPage.STORE_SELECTED_IMPORT_WIZARD_ID"/>
 		<list key="ImportExportPage.STORE_EXPANDED_IMPORT_CATEGORIES">
 			<item value="org.eclipse.ui.Basic"/>
+			<item value="com.android.ide.eclipse.wizards.category"/>
 		</list>
 	</section>
 </section>

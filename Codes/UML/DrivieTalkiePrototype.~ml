@@ -218,9 +218,9 @@
 <XPD:ATTR name="LineColor" type="string">clMaroon</XPD:ATTR>
 <XPD:ATTR name="FillColor" type="string">$00B9FFFF</XPD:ATTR>
 <XPD:ATTR name="Left" type="integer">144</XPD:ATTR>
-<XPD:ATTR name="Top" type="integer">504</XPD:ATTR>
+<XPD:ATTR name="Top" type="integer">500</XPD:ATTR>
 <XPD:ATTR name="Width" type="integer">218</XPD:ATTR>
-<XPD:ATTR name="Height" type="integer">147</XPD:ATTR>
+<XPD:ATTR name="Height" type="integer">160</XPD:ATTR>
 <XPD:REF name="Model">NoKmYI+RrkKk3bmm0YO59QAA</XPD:REF>
 <XPD:OBJ name="NameCompartment" type="UMLNameCompartmentView" guid="H3oxuf1e6kyu+Z1zVQNlMgAA">
 <XPD:OBJ name="NameLabel" type="LabelView" guid="Q5sXwaWKO0GlPSCqzmdpEgAA">
@@ -311,7 +311,7 @@
 <XPD:ATTR name="LineColor" type="string">clMaroon</XPD:ATTR>
 <XPD:ATTR name="FillColor" type="string">$00B9FFFF</XPD:ATTR>
 <XPD:ATTR name="LineStyle" type="LineStyleKind">lsRectilinear</XPD:ATTR>
-<XPD:ATTR name="Points" type="Points">244,407;244,504</XPD:ATTR>
+<XPD:ATTR name="Points" type="Points">244,407;244,500</XPD:ATTR>
 <XPD:REF name="Model">bRb+HuJt/ECBMyX2RiLjpwAA</XPD:REF>
 <XPD:REF name="Head">8kZbrikIJEy8wcy2lEllbwAA</XPD:REF>
 <XPD:REF name="Tail">wI70+SM290m5uG9npnd+rwAA</XPD:REF>
@@ -420,7 +420,7 @@
 <XPD:REF name="ClientDependencies[0]">AVnhVf1lx0mbYY8AV9/KxwAA</XPD:REF>
 <XPD:ATTR name="#Specializations" type="integer">1</XPD:ATTR>
 <XPD:REF name="Specializations[0]">bRb+HuJt/ECBMyX2RiLjpwAA</XPD:REF>
-<XPD:ATTR name="#Operations" type="integer">4</XPD:ATTR>
+<XPD:ATTR name="#Operations" type="integer">5</XPD:ATTR>
 <XPD:OBJ name="Operations[0]" type="UMLOperation" guid="4d70+7d6KUC11W2i1Pe1hgAA">
 <XPD:ATTR name="Name" type="string">getConnection</XPD:ATTR>
 <XPD:REF name="Owner">NoKmYI+RrkKk3bmm0YO59QAA</XPD:REF>
@@ -453,6 +453,10 @@
 <XPD:ATTR name="TypeExpression" type="string">String</XPD:ATTR>
 <XPD:REF name="BehavioralFeature">WDqpO7ZQTkqW2mPpxTIo5AAA</XPD:REF>
 </XPD:OBJ>
+</XPD:OBJ>
+<XPD:OBJ name="Operations[4]" type="UMLOperation" guid="NSAaZJwkFkCJCvMLAADa7AAA">
+<XPD:ATTR name="Name" type="string">XmppServerConnection</XPD:ATTR>
+<XPD:REF name="Owner">NoKmYI+RrkKk3bmm0YO59QAA</XPD:REF>
 </XPD:OBJ>
 <XPD:ATTR name="#TypedParameters" type="integer">1</XPD:ATTR>
 <XPD:REF name="TypedParameters[0]">8keZgWT0RkenTlXFxuFB3QAA</XPD:REF>

@@ -1,0 +1,293 @@
+package com.example.asmacktest;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
+import android.os.Build;
+import android.os.Bundle;
+import android.os.Environment;
+import android.os.StrictMode;
+import android.R.string;
+import android.annotation.SuppressLint;
+import android.annotation.TargetApi;
+import android.app.Activity;
+import android.text.Editable;
+import android.text.method.KeyListener;
+import android.util.Log;
+import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.View;
+import android.view.View.OnKeyListener;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.RelativeLayout;
+import android.widget.Toast;
+
+import org.jivesoftware.smack.*;
+import org.jivesoftware.smack.packet.Message;
+import org.jivesoftware.smackx.ServiceDiscoveryManager;
+import org.jivesoftware.smackx.filetransfer.FileTransferManager;
+import org.jivesoftware.smackx.filetransfer.FileTransferNegotiator;
+import org.jivesoftware.smackx.filetransfer.OutgoingFileTransfer;
+
+
+@TargetApi(Build.VERSION_CODES.GINGERBREAD)
+public class MainActivity extends Activity {
+
+	XMPPConnection xmppConnection;
+//  static JingleSession incoming=null;
+//  static JingleSession outgoing=null;
+
+	
+	@SuppressLint("NewApi")
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		
+		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+		StrictMode.setThreadPolicy(policy);
+
+        String host = "talk.google.com";
+        int port = 5222; 
+        String service = "gmail.com";
+        String username = "shiroyacha1990@gmail.com";
+        String password = "ladivine";
+
+        xmppConnection = new XMPPConnection(new ConnectionConfiguration(host,
+                    port, service));
+        try {
+        	// Setups and connexion
+        	SASLAuthentication.supportSASLMechanism("PLAIN", 0);
+        	// LoginSetup
+        	LoginSettings();
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.main, menu);
+		return true;
+	}
+
+	private void LoginSettings()
+	{
+		// Layout
+		setContentView(R.layout.listview);
+		// Login
+		Button loginButton = (Button) findViewById(R.id.buttonLogin);
+		final EditText userEditText = (EditText) findViewById(R.id.editTextUser);
+		final EditText passwordEditText = (EditText) findViewById(R.id.editTextPassword);
+		loginButton.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View view) {
+		        try
+		        {
+					xmppConnection.connect();
+			        xmppConnection.login(userEditText.getText().toString(), passwordEditText.getText().toString(),"resource");
+			        // Tests
+			        TestRosterDisplay();
+				} catch (XMPPException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		});
+		Button disButton = (Button) findViewById(R.id.buttonDisconnect);
+		disButton.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				 xmppConnection.disconnect();
+			}
+		});
+	}
+	
+	// Tests
+	private void TestRosterDisplay() throws XMPPException {
+		List<String> list = new ArrayList<String>();
+		// Get current user info
+		String myInfo = "current user account:";
+		for (String info : xmppConnection.getAccountManager()
+				.getAccountAttributes())
+			myInfo += info;
+		list.add(myInfo);
+		// Get Roster lists
+		Roster roster = xmppConnection.getRoster();
+		for (RosterEntry entry : roster.getEntries()) {
+			String elementString = "";
+			elementString += "name:" + entry.getName() + "; ";
+			elementString += "user:" + entry.getUser() + "; ";
+			elementString += "status:" + roster.getPresence(entry.getUser())
+					+ "; ";
+			elementString += "type:" + entry.getType() + "; ";
+			elementString += "group:";
+			for (RosterGroup group : entry.getGroups()) {
+				elementString += group.getName();
+			}
+			elementString += "";
+			list.add(elementString);
+		}
+
+		// layout
+		ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,
+				android.R.layout.simple_list_item_1, list);
+		ListView listView = (ListView) findViewById(R.id.listView);
+		listView.setAdapter(arrayAdapter);
+	}
+
+	private void TestSimpleChat() throws XMPPException {
+		
+		// Preparations
+		final List<String> elements = new ArrayList<String>();
+		List<String> messagelist = new ArrayList<String>();
+		final String opposite = "lizhao.hou@gmail.com";
+		final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
+				this, android.R.layout.simple_list_item_1, elements);
+		// Get opposite
+		Roster roster = xmppConnection.getRoster();
+		final Chat chat = xmppConnection.getChatManager().createChat(opposite,
+				new MessageListener() {
+
+					@Override
+					public void processMessage(Chat chat, Message message) {
+						// process
+						if(message.getBody()!=null)
+						{
+							final String messageDisplay = opposite + " :" + message.getBody();
+							elements.add(messageDisplay);
+							arrayAdapter.notifyDataSetChanged();
+						}
+					}
+				});
+
+		// layout
+		ListView listView = (ListView) findViewById(R.id.listView);
+		final EditText editText = (EditText) findViewById(R.id.editText);
+		editText.setOnKeyListener(new OnKeyListener() {
+			@Override
+			public boolean onKey(View v, int keyCode, KeyEvent event) {
+				// If the event is a key-down event on the "enter" button
+				if ((event.getAction() == KeyEvent.ACTION_DOWN)
+						&& (keyCode == KeyEvent.KEYCODE_ENTER)) {
+					// Perform action on key press
+					String message = editText.getText().toString();
+					// Send message
+					try {
+						chat.sendMessage(message);
+					} catch (XMPPException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					// Display
+					final String displayMessageString = "me :" + message;
+					elements.add(displayMessageString);
+					arrayAdapter.notifyDataSetChanged();
+					return true;
+				}
+				return false;
+			}
+		});
+		listView.setAdapter(arrayAdapter);
+	}
+	
+	private void TestFileSend()throws XMPPException, IOException
+	{
+		Roster roster = xmppConnection.getRoster();
+		final String opposite = "sebzhaomin@gmail.com";
+		 // Create the file transfer manager
+		ServiceDiscoveryManager sdm = ServiceDiscoveryManager
+                .getInstanceFor(xmppConnection);
+        if (sdm == null)
+        sdm = new ServiceDiscoveryManager(xmppConnection);
+        sdm.addFeature("http://jabber.org/protocol/disco#info");
+        sdm.addFeature("jabber:iq:privacy");
+
+        FileTransferManager manager=new FileTransferManager(xmppConnection);
+        FileTransferNegotiator.setServiceEnabled(xmppConnection, true);
+        // Create the outgoing file transfer
+        OutgoingFileTransfer transfer = manager
+                .createOutgoingFileTransfer(opposite);
+        // Send the file
+        File sdcard = Environment.getExternalStorageDirectory();
+    	File file=new File(sdcard.getAbsolutePath()+File.separator+"test"+File.separator+"img106.jpg");
+    	Boolean testRead=file.canRead(); 
+    	transfer.sendFile(file, "test");
+    	Log.i("transfer file", "sending file");
+        Log.i("transfer file","the path is :"+file.getAbsolutePath());
+        while (!transfer.isDone()) {
+            try {
+                Thread.sleep(1000);
+                Log.i("transfer file",
+                        "sending file status :- "
+                                + transfer.getStatus()
+                                + " "
+                                + "progress:-"
+                                + transfer
+                                        .getProgress());
+                if (transfer.getStatus() == org.jivesoftware.smackx.filetransfer.FileTransfer.Status.error) {
+                    transfer.cancel();
+                    Log.e("", "ERROR");
+                    break;
+                }
+            } catch (InterruptedException e) {
+                // TODO Auto-generated catch block
+                Log.e("catch", "catch" + e);
+                e.printStackTrace();
+            }
+        }
+
+        String done="Is it done? " + transfer.isDone();
+        //
+        ListView listView = (ListView) findViewById(R.id.listView);
+        final List<String> elements = new ArrayList<String>();
+        elements.add(done);
+        final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
+				this, android.R.layout.simple_list_item_1, elements);
+        listView.setAdapter(arrayAdapter);
+        
+	}
+	
+	private void TestVoiceChat() throws XMPPException
+{
+//		ICETransportManager icetm0 = new ICETransportManager(xmppConnection, "10.47.47.53", 3478); 
+//        List<JingleMediaManager> mediaManagers = new ArrayList<JingleMediaManager>(); 
+//        mediaManagers.add(new JingleMediaManager(icetm0)); 
+//
+//        JingleManager jm = new JingleManager(xmppConnection, mediaManagers); 
+//        jm.addCreationListener(icetm0); 
+//  
+//        jm.addJingleSessionRequestListener(new JingleSessionRequestListener() { 
+//
+//            public void sessionRequested(JingleSessionRequest request) { 
+//  
+////                if (incoming != null) 
+////                    return; 
+//  
+//                try { 
+//                    // Accept the call 
+//                    incoming = request.accept(); 
+//  
+//                    // Start the call 
+//                    incoming.startIncoming(); 
+//                } 
+//                catch (XMPPException e) { 
+//                    e.printStackTrace(); 
+//                } 
+//  
+//            }
+//
+//        }); 
+//
+}
+
+
+
+}

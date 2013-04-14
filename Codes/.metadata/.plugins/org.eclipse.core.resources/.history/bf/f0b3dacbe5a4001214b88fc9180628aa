@@ -1,0 +1,77 @@
+package core;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.jivesoftware.smack.Roster;
+import org.jivesoftware.smack.RosterEntry;
+import org.jivesoftware.smack.RosterGroup;
+import org.jivesoftware.smack.XMPPConnection;
+import org.jivesoftware.smack.XMPPException;
+
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
+import com.example.drivietalkieprototype.R;
+
+public class RosterManager {
+
+	private XMPPConnection connection;
+	
+	public RosterManager(XMPPConnection connection)
+	{
+		this.connection=connection;
+	}
+	
+	public List<String> GetRosterList()
+	{
+		connection.getRoster();
+		for (RosterEntry entry : roster.getEntries()) {
+			String elementString = "";
+			elementString += "name:" + entry.getName() + "; ";
+			elementString += "user:" + entry.getUser() + "; ";
+			elementString += "status:" + roster.getPresence(entry.getUser())
+					+ "; ";
+			elementString += "type:" + entry.getType() + "; ";
+			elementString += "group:";
+			for (RosterGroup group : entry.getGroups()) {
+				elementString += group.getName();
+			}
+			elementString += "";
+			list.add(elementString);
+		}
+	}
+	
+	
+    private void TestRosterDisplay() throws XMPPException {
+		List<String> list = new ArrayList<String>();
+		// Get current user info
+		String myInfo = "current user account:";
+		for (String info : xmppConnection.getAccountManager()
+				.getAccountAttributes())
+			myInfo += info;
+		list.add(myInfo);
+		// Get Roster lists
+		Roster roster = xmppConnection.getRoster();
+		for (RosterEntry entry : roster.getEntries()) {
+			String elementString = "";
+			elementString += "name:" + entry.getName() + "; ";
+			elementString += "user:" + entry.getUser() + "; ";
+			elementString += "status:" + roster.getPresence(entry.getUser())
+					+ "; ";
+			elementString += "type:" + entry.getType() + "; ";
+			elementString += "group:";
+			for (RosterGroup group : entry.getGroups()) {
+				elementString += group.getName();
+			}
+			elementString += "";
+			list.add(elementString);
+		}
+
+		// layout
+		ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,
+				android.R.layout.simple_list_item_1, list);
+		ListView listView = (ListView) findViewById(R.id.listView);
+		listView.setAdapter(arrayAdapter);
+	}
+}

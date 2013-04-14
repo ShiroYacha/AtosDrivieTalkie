@@ -3,6 +3,7 @@
 	<item value="D:\ProgrammingProjects\Java\Atos_IT_Challenge\Development\Libs\asmack" key="org.eclipse.jdt.ui.lastextjar"/>
 	<item value="D:\ProgrammingProjects\Java\Atos_IT_Challenge\AtosDrivieTalkie\Codes\UML\GeneratedCodes" key="org.eclipse.jdt.ui.last.external.project"/>
 	<section name="OptionalMessageDialog.hide.">
+		<item value="true" key="org.eclipse.jdt.ui.typecomment.deprecated"/>
 	</section>
 	<section name="org.eclipse.jdt.internal.ui.packageview.PackageExplorerPart">
 		<item value="true" key="group_libraries"/>
@@ -16,8 +17,15 @@
 	<section name="JavaElementSearchActions">
 	</section>
 	<section name="BuildPathsPropertyPage">
-		<item value="2" key="pageIndex"/>
+		<item value="1" key="pageIndex"/>
+	</section>
+	<section name="org.eclipse.ltk.ui.refactoring.settings">
+	</section>
+	<section name="RenameInformationPopup">
 	</section>
 	<section name="quick_assist_proposal_size">
+	</section>
+	<section name="ClasspathContainerSelectionPage">
+		<item value="3" key="index"/>
 	</section>
 </section>

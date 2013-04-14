@@ -1,3 +1,4 @@
+Refactoring.savealleditors=true
 content_assist_add_import=true
 content_assist_autoactivation=true
 content_assist_autoactivation_delay=10
@@ -11,7 +12,7 @@ content_assist_favorite_static_members=
 content_assist_fill_method_arguments=true
 content_assist_guess_method_arguments=false
 content_assist_insert_completion=true
-content_assist_lru_history=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><history maxLHS\="100" maxRHS\="10"><lhs name\="DrivieTalkieCore.XmppClientFacade"><rhs name\="DrivieTalkieCore.XmppClientFacade"/></lhs></history>
+content_assist_lru_history=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><history maxLHS\="100" maxRHS\="10"><lhs name\="DrivieTalkieCore.XmppClientFacade"><rhs name\="DrivieTalkieCore.XmppClientFacade"/></lhs><lhs name\="android.os.Parcelable"><rhs name\="android.content.Intent"/></lhs><lhs name\="java.lang.Cloneable"><rhs name\="android.content.Intent"/></lhs><lhs name\="android.content.Intent"><rhs name\="android.content.Intent"/></lhs><lhs name\="core.RosterManager"><rhs name\="core.RosterManager"/></lhs><lhs name\="java.util.Map"><rhs name\="java.util.HashMap"/></lhs></history>
 content_assist_number_of_computers=12
 content_assist_prefix_completion=false
 content_assist_proposals_background=255,255,255

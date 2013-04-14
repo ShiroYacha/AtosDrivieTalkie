@@ -1,0 +1,21 @@
+package com.example.drivietalkieprototype;
+
+import org.jivesoftware.smack.XMPPConnection;
+import org.jivesoftware.smack.XMPPException;
+
+public class XmppClientFacade {
+	
+	private XMPPConnection xmppConnection;
+	public void login(String username, String password, String server) throws XMPPException {
+	
+		XmppServerConnection xmppServerConnection=null;
+		// Create different server connection
+		if(server=="Gtalk")
+			xmppServerConnection=XmppServerConnectionFactory.CreateGtalkConnection();
+		// Connect and login
+		xmppServerConnection.connect();
+		xmppServerConnection.login(username, password);
+		// Store connection
+		xmppConnection=xmppServerConnection.getConnection();
+	}
+}
